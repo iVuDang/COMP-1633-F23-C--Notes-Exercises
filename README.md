@@ -24,3 +24,43 @@ double calc_open_balance(){}
 
 Variable:
 open_balance = 
+
+
+// Debug in linux
+In emacs, alt + x, type 'compile', enter
+Ctrl + x, ~, to go to the error. 
+
+
+
+// 
+ctrl x u 
+to undo
+
+ctrl w to cut
+
+ctrl y to paste
+
+alt x, type compile 
+
+ctrl x, hit `, to go to the error 
+
+left click to paste all 
+
+
+
+// to copy from emacs
+cat <filename>
+select all with mouse
+press alt + w to copy
+ctrl + v to paste  
+
+
+//------------------------------------------------------------------------------
+use spaces no more than 80 character per sentence 
+
+
+
+// to test data
+
+./a.out < <test file name>
+
