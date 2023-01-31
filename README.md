@@ -22,25 +22,27 @@ function body, at most one return statement for each function.
 //------------------------------------------------------------------------------
 
 <br>
-----
+
+---
 
 ### :x: AVOID
 * Global variables are unacceptable. **Global constants are encouraged** e.g. GST used in several functions.
 
 <br>
----- 
+
+---
 
 ### :desktop_computer: Linux Terminal Commands 
 
 Context | Keyboard Shortcut | Purpose
 ---- | ---- | ----
 In Emacs | Alt + <kbd>X</kbd>, type Compile | to compile/debug within the emacs editor 
-In Emacs | Ctrl + <kbd>X</kbd>, ` | to jump to error. 
+In Emacs | Ctrl + <kbd>X</kbd>, <kbd>`</kbd> | to jump to error. 
 In Linux | Ctrl X, <kbd>U</kbd> | Undo recent action. 
 In Linux | Ctrl + <kbd>W</kbd> | Cut. 
 In Linux | Ctrl + <kbd>Y</kbd> | Paste.
 In Linux | Right click mouse | Paste. 
-In Linux | cat <filename>, select all with mouse, Alt + W | Ctrl + V to copy and paste contents outside of linux terminal e.g. to Visual Studio Code. 
+In Linux | cat <filename>, select all with mouse, Alt + <kbd>W</kbd> | Ctrl + V to copy and paste contents outside of linux terminal e.g. to Visual Studio Code. 
 In Linux | cd | navigate to home directory.
 In Linux | cd.. | navigate up one directory. 
 In Linux | pwd | check current file path. 
