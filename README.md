@@ -61,7 +61,6 @@ Emacs | Ctrl + <kbd>X</kbd>, Ctrl + <kbd>C</kbd> | close.
 Emacs | Ctrl + <kbd>Z</kbd>, type fg | suspend, and resume. 
 Linux | type and hit <kbd>tab</kbd> | shortcut to autofill. 
 Linux | up arrow key | shortcut to autofill recent command.  
-Linux | type and hit tab | shortcut to autofill. 
 Linux | Ctrl X, <kbd>U</kbd> | Undo recent action. 
 Linux | Ctrl + <kbd>W</kbd> | Cut. 
 Linux | Ctrl + <kbd>Y</kbd> | Paste.
