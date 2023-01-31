@@ -65,17 +65,22 @@ Linux | Ctrl X, <kbd>U</kbd> | Undo recent action.
 Linux | Ctrl + <kbd>W</kbd> | Cut. 
 Linux | Ctrl + <kbd>Y</kbd> | Paste.
 Linux | Right click mouse | Paste. 
+Linux | cat filename | view contents of file. 
 Linux | cat <filename>, select all with mouse, Alt + <kbd>W</kbd> | Ctrl + V to copy and paste contents outside of linux terminal e.g. to Visual Studio Code. 
 Linux | cd | navigate to home directory.
 Linux | cd.. | navigate up one directory. 
 Linux | pwd | check current file path. 
 Linux | ls -l | list all items in directory vertically. 
 Linux | ls | list all items in directory horizontally. 
-Linux | cp <filename> <destination> | copy file to specified destination. 
-Linux | cp <filename> ~ | copy file to home directory. 
-Linux | g++ <filename> | compile/debug the code file. 
-Linux | ./a.out < <test filename> | run test file. 
-Linux | lpr <filename> | print file. 
+Linux | cp filename destination | copy file to specified destination. 
+Linux | cp filename ~ | copy file to home directory. 
+Linux | cp -R directoryname| copy directory. 
+Linux | mv oldnamefile1 newnamefile1 | change name of file. 
+Linux | rm filename | remove file.
+Linux | rm -R directoryname | remove directory. 
+Linux | g++ filename | compile/debug the code file. 
+Linux | ./a.out < test filename | run test file. 
+Linux | lpr filename | print file. 
 
 
 
