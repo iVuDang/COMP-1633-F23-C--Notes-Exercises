@@ -21,20 +21,24 @@ function body, at most one return statement for each function.
 * length of any line is to be less than or equal to **80 characters**. Should be shorter than this line:
 //------------------------------------------------------------------------------
 
+<br>
+----
 
 ### :x: AVOID
 * Global variables are unacceptable. **Global constants are encouraged** e.g. GST used in several functions.
 
+<br>
+---- 
 
-### Linux Terminal Commands 
+### :desktop_computer: Linux Terminal Commands 
 
 Context | Keyboard Shortcut | Purpose
 ---- | ---- | ----
-In Emacs | Alt + X, type Compile | to compile/debug within the emacs editor 
-In Emacs | Ctrl + X, ` | to jump to error. 
-In Linux | Ctrl X, U | Undo recent action. 
-In Linux | Ctrl + W | Cut. 
-In Linux | Ctrl + Y | Paste.
+In Emacs | Alt + <kbd>X</kbd>, type Compile | to compile/debug within the emacs editor 
+In Emacs | Ctrl + <kbd>X</kbd>, ` | to jump to error. 
+In Linux | Ctrl X, <kbd>U</kbd> | Undo recent action. 
+In Linux | Ctrl + <kbd>W</kbd> | Cut. 
+In Linux | Ctrl + <kbd>Y</kbd> | Paste.
 In Linux | Right click mouse | Paste. 
 In Linux | cat <filename>, select all with mouse, Alt + W | Ctrl + V to copy and paste contents outside of linux terminal e.g. to Visual Studio Code. 
 In Linux | cd | navigate to home directory.
@@ -45,5 +49,6 @@ In Linux | ls | list all items in directory horizontally.
 In Linux | cp <filename> <destination> | copy file to specified destination. 
 In Linux | cp <filename> ~ | copy file to home directory. 
 in Linux | g++ <filename> | compile/debug the code file. 
-In Linux | ./a.out < <test file name> | Run test file. 
+In Linux | ./a.out < <test filename> | run test file. 
+In Linux | lpr <filename> | print file. 
 
