@@ -1,66 +1,49 @@
-# COMP-1633-F23-C--Notes-Exercises
-Notes on C++
-
-
-// In this course, global variables are not allowed. Constants (using const) may be declared globally or locally. Global constants
-are encouraged e.g. GST used in several functions. 
-
-// the standards in this course allow at most one return statement for each function. (Often text books give simple examples with 2 returns but this is not
-allowed!)
-
-// all functions either:
-–
-returns a single result
-OR
-–
-returns nothing (void)
-
-
-// Functions is an action so it starts with a verb, and variables describe what the value is
-therefore, the naming will always be different e.g. 
-
-Function:
-double calc_open_balance(){}
-
-Variable:
-open_balance = 
-
-
-// Debug in linux
-In emacs, alt + x, type 'compile', enter
-Ctrl + x, ~, to go to the error. 
+# COMP-1633-F23-Cplusplus-Notes
 
 
 
-// 
-ctrl x u 
-to undo
+## Coding Standards 
 
-ctrl w to cut
-
-ctrl y to paste
-
-alt x, type compile 
-
-ctrl x, hit `, to go to the error 
-
-left click to paste all 
-
-
-
-// to copy from emacs
-cat <filename>
-select all with mouse
-press alt + w to copy
-ctrl + v to paste  
-
-
+### :white_check_mark: GOOD 
+* white space for increased readability
+* one statement per line 
+* consistent bracing formats with paired open and close braces aligned vertically
+* variable and function names, must be meaningful and self-descriptive, with underscores to separate words:
+    * function names start with verb, lowercase e.g. get_name
+    * variable names describe what it is, lowercase e.g. avg_grade 
+    * constants are capitalized e.g. TAX_RATE
+* A function must have a single exit point (i.e. return statement), at the end of the
+function body, at most one return statement for each function.
+* One function, one job. 
+* Keep calculations separate from output and return statements. Use variables to store intermediate calcs.
+* Each variable should have exactly one purpose. 
+* All local variable declarations at the top of each function, before the statements.
+* length of any line is to be less than or equal to **80 characters**. Should be shorter than this line:
 //------------------------------------------------------------------------------
-use spaces no more than 80 character per sentence 
 
 
+### :x: AVOID
+* Global variables are unacceptable. **Global constants are encouraged** e.g. GST used in several functions.
 
-// to test data
 
-./a.out < <test file name>
+### Linux Terminal Commands 
+
+Context | Keyboard Shortcut | Purpose
+---- | ---- | ----
+In Emacs | Alt + X, type Compile | to compile/debug within the emacs editor 
+In Emacs | Ctrl + X, ` | to jump to error. 
+In Linux | Ctrl X, U | Undo recent action. 
+In Linux | Ctrl + W | Cut. 
+In Linux | Ctrl + Y | Paste.
+In Linux | Right click mouse | Paste. 
+In Linux | cat <filename>, select all with mouse, Alt + W | Ctrl + V to copy and paste contents outside of linux terminal e.g. to Visual Studio Code. 
+In Linux | cd | navigate to home directory.
+In Linux | cd.. | navigate up one directory. 
+In Linux | pwd | check current file path. 
+In Linux | ls -l | list all items in directory vertically. 
+In Linux | ls | list all items in directory horizontally. 
+In Linux | cp <filename> <destination> | copy file to specified destination. 
+In Linux | cp <filename> ~ | copy file to home directory. 
+in Linux | g++ <filename> | compile/debug the code file. 
+In Linux | ./a.out < <test file name> | Run test file. 
 
