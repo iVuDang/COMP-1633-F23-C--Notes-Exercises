@@ -41,7 +41,7 @@ Header documentation for each function must include the following:
 
 <br>
 
-## Notes 
+## :bookmark_tabs: Notes 
 * Operator precedence
     * Left to Right if same precedence level. 
     * a*b   a/b   a%b
@@ -54,7 +54,10 @@ Header documentation for each function must include the following:
 * Integer operated on Integer will result in an integer, removing the trailing decimal.
     * 3 / 2 = 1 
     * 3 / 2 is 1.5, but the .5 is removed. 
-    
+* Integer operated with a double will result in a double. 
+    * 1 + 2.5 = 3.5
+
+
 
 
 
