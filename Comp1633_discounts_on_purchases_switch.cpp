@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std; 
 
-
 /*
 Write a function that calculates the amount to be paid by a customer that purchases 1, 2, 3 or more identical products. 
 
@@ -15,21 +14,27 @@ Don’t forget to add the GST at the end. Make sure you use nested ifs for decis
 */
 
 
-
 double calc_pay_amount(int num_products, double unit_price){
 
   const double GST = 0.05; 
 
   double discount = 0, total = 0; 
 
-  if (num_products == 1){
-    discount = 0.05;
-  } else if (num_products == 2){
-    discount = 0.1;
-  } else if (num_products == 3){
-    discount = 0.25;
-  } else {
-    discount = 0.4;
+  switch(num_products){
+    case 1: 
+      discount = 0.05;
+      break;
+
+    case 2: 
+      discount = 0.1; 
+      break;
+
+    case 3: 
+      discount = 0.25;
+      break; 
+
+    default: 
+      discount = 0.4; 
   }
 
   total = (num_products * unit_price) - (discount * num_products * unit_price) * (1 + GST); 
