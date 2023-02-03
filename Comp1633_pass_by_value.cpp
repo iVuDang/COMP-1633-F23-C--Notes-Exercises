@@ -1,11 +1,13 @@
 #include <iostream>
 using namespace std;
 
+// DECLARE PROTOTYPE
 void swap(int a, int b);
 
+// FUNCTION with PROTOTYPE above
 void swap(int a, int b) {
   int temp;
-
+  
   temp = a;
   a = b;
   b = temp;
