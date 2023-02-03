@@ -41,6 +41,29 @@ Header documentation for each function must include the following:
 
 <br>
 
+## Notes 
+* Operator precedence
+    * Left to Right if same precedence level. 
+    * a*b   a/b   a%b
+    * a+b   a-b
+    * A double cannot be used with modulus 
+* Modulus formula: (Quotient × Divisor) + Remainder = Dividend
+    * 5 % 6
+    * = 5
+    * (0 quotient x 6) + 5 = 5
+* Integer operated on Integer will result in an integer, removing the trailing decimal.
+    * 3 / 2 = 1 
+    * 3 / 2 is 1.5, but the .5 is removed. 
+    
+
+
+
+
+
+
+
+
+<br>
 ---
 
 ### :x: AVOID
