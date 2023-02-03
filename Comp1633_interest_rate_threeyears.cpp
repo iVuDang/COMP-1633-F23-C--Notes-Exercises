@@ -48,6 +48,7 @@ Write the pseudo-code of an algorithm that calculates the amount your bank accou
 In:
 
 Data: current_balance, interest_rate
+
 */
 
 int main() {
