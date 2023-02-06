@@ -41,7 +41,6 @@ Header documentation for each function must include the following:
 
 <br>
 
----
 
 ### :x: AVOID
 * Global variables are unacceptable. **Global constants are encouraged** e.g. GST used in several functions.
