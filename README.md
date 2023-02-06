@@ -41,6 +41,15 @@ Header documentation for each function must include the following:
 
 <br>
 
+---
+
+### :x: AVOID
+* Global variables are unacceptable. **Global constants are encouraged** e.g. GST used in several functions.
+
+<br>
+
+---
+
 ## :bookmark_tabs: Notes 
 * Operator precedence
     * Left to Right if same precedence level. 
@@ -62,14 +71,7 @@ Header documentation for each function must include the following:
 
 ---
 
-### :x: AVOID
-* Global variables are unacceptable. **Global constants are encouraged** e.g. GST used in several functions.
-
-<br>
-
----
-
-### :desktop_computer: Linux Terminal Commands 
+## :desktop_computer: Linux Terminal Commands 
 
 Context | Keyboard Shortcut | Purpose
 ---- | ---- | ----
