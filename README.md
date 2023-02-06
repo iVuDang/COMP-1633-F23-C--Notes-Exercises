@@ -58,15 +58,8 @@ Header documentation for each function must include the following:
     * 1 + 2.5 = 3.5
 
 
-
-
-
-
-
-
-
-
 <br>
+
 ---
 
 ### :x: AVOID
