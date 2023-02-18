@@ -44,6 +44,7 @@ Header documentation for each function must include the following:
 
 ### :x: AVOID
 * Global variables are unacceptable. **Global constants are encouraged** e.g. GST used in several functions.
+* Code or email, no more than 80 spaces (keep easy to read). 
 
 <br>
 
