@@ -1,0 +1,103 @@
+To add line numbers to your Emacs display:
+
+1) open up ~/.emacs
+2) add the following lines to the bottom:
+
+; add line numbers to display
+(global-linum-mode 1)
+(setq linum-format "%d ")
+
+3) restart Emacs
+
+=====================================================
+
+To add the 80-column marker to your Emacs display:
+
+1) add the following to the bottom of the file:
+
+ (require 'whitespace)
+ (setq whitespace-style '(face empty tabs lines-tail trailing))
+ (global-whitespace-mode t)
+
+
+2) restart Emacs
+
+=====================================================
+
+Or to add a column number to the status bar with the line number
+
+1) open up ~/.emacs
+2) add the following lines to the bottom:
+
+(setq column-number-mode t)
+
+3) restart Emacs
+
+
+
+====================================================
+
+Want to use the numeric keypad in Kitty properly? Put this in your .emacs and then restart emacs:
+
+(global-set-key "\eOp" "0")
+(global-set-key "\eOq" "1")
+(global-set-key "\eOr" "2")
+(global-set-key "\eOs" "3")
+(global-set-key "\eOt" "4")
+(global-set-key "\eOu" "5")
+(global-set-key "\eOv" "6")
+(global-set-key "\eOw" "7")
+(global-set-key "\eOx" "8")
+(global-set-key "\eOy" "9")
+(global-set-key "\eOl" "+")
+(global-set-key "\eOQ" "/")
+(global-set-key "\eOR" "*")
+(global-set-key "\eOS" "-")
+(global-set-key "\eOn" ".")
+
+
+====================================================
+EMACS
+
+Alt + Shift + < > : to auto move up and down
+c + S : to find keyword
+C + R : to reverse search
+C + G : to quit current command 
+C + L: move cursor to center of screen
+
+C + Z / FG : to sleep, unsleep
+
+C + X pause, 2 : horizontal panes
+C + X pause, 3: vertical panes
+C + X pause, 1: 1 pane
+
+
+C + X, u : to undo
+
+C + K : to delete
+C + Y : undo 
+
+
+Shift + arrow down to highlight 
+Ctrl + Space (at top of code) : to highlight
+
+
+Ctrl + X, H to select all 
+Ctrl + G, to kill
+
+Ctrl + W : to cut
+Ctrl + Y: to paste
+
+type few letters, Alt + / : to autocomplete variables 
+Ctrl + / : to undo 
+
+Shift + Alt + % : query replace
+
+Alt + X, type compile: 
+` to jump to next error 
+fix, repeat
+
+
+Alt + X, type customize-themes: press enter 
+
+
