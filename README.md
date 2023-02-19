@@ -566,7 +566,150 @@ function body, at most one return statement for each function.
         Defining your testing/feedback/release strategy.
         Determining how you will back up your code.
 
-    4. 
+    4. Break hard problems into easy problems.
+    
+        * Top down method:
+            Let’s take a look at an example of this. Let’s say we want to clean our house. Our task hierarchy currently looks like this:
+
+            Clean the house
+            Cleaning the entire house is a pretty big task to do in one sitting, so let’s break it into subtasks:
+
+            Clean the house
+            Vacuum the carpets
+            Clean the bathrooms
+            Clean the kitchen
+            That’s more manageable, as we now have subtasks that we can focus on individually. However, we can break some of these down even further:
+
+            Clean the house
+            Vacuum the carpets
+            Clean the bathrooms
+            Scrub the toilet (yuck!)
+            Wash the sink
+            Clean the kitchen
+            Clear the countertops
+            Clean the countertops
+            Scrub the sink
+            Take out the trash
+
+        * Bottom up method:
+            As an example, many people have to go to work or school on weekdays, so let’s say we want to solve the problem of “go to work”. If you were asked what tasks you did in the morning to get from bed to work, you might come up with the following list:
+
+            Pick out clothes
+            Get dressed
+            Eat breakfast
+            Travel to work
+            Brush your teeth
+            Get out of bed
+            Prepare breakfast
+            Get on your bicycle
+            Take a shower
+
+            Get from bed to work
+                Bedroom things
+                    Turn off alarm
+                    Get out of bed
+                    Pick out clothes
+
+            Bathroom things
+                Take a shower
+                Get dressed
+                Brush your teeth
+
+            Breakfast things
+                Make coffee or tea
+                Eat cereal
+
+            Transportation things
+                Get on your bicycle
+                Travel to work
+
+    5. Sequence of events
+        If we were writing a calculator, we might do things in this order:
+        Get first number from user
+        Get mathematical operation from user
+        Get second number from user
+        Calculate result
+        Print result
+        
+* Implementation
+    1. Implementation step 1: Outlining your main function
+
+        ```cpp
+        int main()
+        {
+        //    doBedroomThings();
+        //    doBathroomThings();
+        //    doBreakfastThings();
+        //    doTransportationThings();
+
+            return 0;
+        }
+
+        Or in the case of the calculator:
+
+        int main()
+        {
+            // Get first number from user
+        //    getUserInput();
+
+            // Get mathematical operation from user
+        //    getMathematicalOperation();
+
+            // Get second number from user
+        //    getUserInput();
+
+            // Calculate result
+        //    calculateResult();
+
+            // Print result
+        //    printResult();
+
+            return 0;
+        }
+
+        ```
+
+    2. Implement each function
+
+        ```cpp
+        #include <iostream>
+
+        // Full implementation of the getUserInput function
+        int getUserInput()
+        {
+            std::cout << "Enter an integer: ";
+            int input{};
+            std::cin >> input;
+
+            return input;
+        }
+
+        int main()
+        {
+            // Get first number from user
+            int value{ getUserInput() }; // Note we've included code here to test the return value!
+            std::cout << value << '\n'; // debug code to ensure getUserInput() is working, we'll remove this later
+
+            // Get mathematical operation from user
+        //    getMathematicalOperation();
+
+            // Get second number from user
+        //    getUserInput();
+
+            // Calculate result
+        //    calculateResult();
+
+            // Print result
+        //    printResult();
+
+            return 0;
+        }
+
+    ```
+
+    3. Final testing - test the whole program to ensure it works as intended. 
+
+
 
 
 <br>
