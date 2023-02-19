@@ -716,7 +716,131 @@ function body, at most one return statement for each function.
     * Don't worry about perfecting early code. The first draft of a feature (or program) is rarely good. Furthermore, programs tend to evolve over time, as you add capabilities and find better ways to structure things. If you invest too early in polishing your code (adding lots of documentation, full compliance with best practices, making optimizations), you risk losing all of that investment when a code change is necessary. Instead, get your features **minimally working** and then move on. As you gain confidence in your solutions, apply successive layers of polish. Don’t aim for perfect -- non-trivial programs are never perfect, and there’s always something more that could be done to improve them. Get to **“good enough” and move on**.
 
 
+* Debugging tactics:
+    1. Commenting out sections of code to see if issue persists 
+    e.g. if commenting out doMaintenance, the problem goes away, 
+    then doMaintenance must be causing the problem, 
+    and we should focus our attention there.
+    if the problem persists (which is more likely), then we know doMaintenance wasn’t at fault
 
+    ```cpp
+        int main()
+        {
+            getNames(); // ask user to enter a bunch of names
+        //    doMaintenance(); // do some random stuff
+            sortNames(); // sort them in alphabetical order
+            printNames(); // print the sorted list of names
+
+            return 0;
+        }
+
+    ```
+
+
+    2. Add cerr<< validation/debug print statements
+    (When adding temporary debug statements, it can be helpful to not indent them. This makes them easier to find for removal later)
+
+    ```cpp 
+        #include <iostream>
+
+        int getValue()
+        {
+        std::cerr << "getValue() called\n";
+            return 4;
+        }
+
+        int main()
+        {
+        std::cerr << "main() called\n";
+            std::cout << getValue;
+
+            return 0;
+        }
+    ```
+
+    Now when these functions execute, they’ll output their names, indicating that they were called:
+
+    Output:
+        main() called
+        1
+
+    Now we can see that function getValue was never called. There must be some problem with the code that calls the function. 
+
+    ```cpp 
+        we forgot the parenthesis on the function call. It should be:
+
+        #include <iostream>
+
+        int getValue()
+        {
+        std::cerr << "getValue() called\n";
+            return 4;
+        }
+
+        int main()
+        {
+        std::cerr << "main() called\n";
+            std::cout << getValue(); // added parenthesis here
+
+            return 0;
+        }
+
+    ```
+    Output:
+        main() called
+        getValue() called
+        4
+
+    3. Add cerr << statements to print/validate values:
+
+    ```cpp 
+        #include <iostream>
+
+        int add(int x, int y)
+        {
+        std::cerr << "add() called (x=" << x <<", y=" << y << ")\n";
+            return x + y;
+        }
+
+        void printResult(int z)
+        {
+            std::cout << "The answer is: " << z << '\n';
+        }
+
+        int getUserInput()
+        {
+            std::cout << "Enter a number: ";
+            int x{};
+            std::cin >> x;
+            return x;
+        }
+
+        int main()
+        {
+            int x{ getUserInput() };
+        std::cerr << "main::x = " << x << '\n';
+            int y{ getUserInput() };
+        std::cerr << "main::y = " << y << '\n';
+
+            std::cout << x << " + " << y << '\n';
+
+            int z{ add(x, 5) };
+        std::cerr << "main::z = " << z << '\n';
+            printResult(z);
+
+            return 0;
+        }
+
+    ```
+    Output:
+
+    Enter a number: 4
+    main::x = 4
+    Enter a number: 3
+    main::y = 3
+    add() called (x=4, y=5)
+    main::z = 9
+    The answer is: 9
 
 <br>
 
