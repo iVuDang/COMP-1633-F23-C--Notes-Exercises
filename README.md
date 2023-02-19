@@ -19,7 +19,13 @@ function body, at most one return statement for each function.
 * Each variable should have exactly one purpose. 
 * All local variable declarations at the top of each function, before the statements.
 * length of any line is to be less than or equal to **80 characters**. Should be shorter than this line:
+
+<br>
+
 //------------------------------------------------------------------------------
+
+<br>
+
 * Comments should describe the 
     1.  Typically at the top of the file, library, or a function - WHAT the library, program, or the function does
 
