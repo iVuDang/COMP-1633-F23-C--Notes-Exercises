@@ -6,6 +6,7 @@
 * [C++ for Python Programmers](https://runestone.academy/ns/books/published/cpp4python/index.html)
 
 ## Coding Standards 
+<br> 
 
 ### :white_check_mark: GOOD 
 * white space for increased readability
