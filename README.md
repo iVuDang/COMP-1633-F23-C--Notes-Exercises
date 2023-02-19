@@ -24,7 +24,7 @@ function body, at most one return statement for each function.
 * Keep calculations separate from output and return statements. Use variables to store intermediate calcs.
 * Each variable should have exactly one purpose. 
 * All local variable declarations at the top of each function, before the statements.
-* length of any line is to be less than or equal to **80 characters**. Should be shorter than this line:
+* Lines should be no longer than **80 chars** in length. Shorter than this line:
 
 <br>
 
@@ -180,6 +180,14 @@ function body, at most one return statement for each function.
         return 0;
     }
 
+    ```
+
+* Opening brace appears on its own line to enhace readability and easy to see where error:
+
+    ```cpp
+    int main()
+    {
+    }
     ```
 
 
