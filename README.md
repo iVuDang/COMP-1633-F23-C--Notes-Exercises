@@ -190,6 +190,57 @@ function body, at most one return statement for each function.
     }
     ```
 
+* Use whitepace/indentations to make code easier to read by aligning values and adding space:
+
+    ```cpp
+
+    Harder to read:
+    
+    cost = 57;
+    pricePerItem = 24;
+    value = 5;
+    numberOfItems = 17;
+    Easier to read:
+
+    cost          = 57;
+    pricePerItem  = 24;
+    value         = 5;
+    numberOfItems = 17;
+
+
+    Harder to read:
+
+    std::cout << "Hello world!\n"; // cout lives in the iostream library
+    std::cout << "It is very nice to meet you!\n"; // these comments make the code hard to read
+    std::cout << "Yeah!\n"; // especially when lines are different lengths
+    Easier to read:
+
+    std::cout << "Hello world!\n";                  // cout lives in the iostream library
+    std::cout << "It is very nice to meet you!\n";  // these comments are easier to read
+    std::cout << "Yeah!\n";                         // especially when all lined up
+
+
+    Harder to read:
+
+    // cout lives in the iostream library
+    std::cout << "Hello world!\n";
+    // these comments make the code hard to read
+    std::cout << "It is very nice to meet you!\n";
+    // especially when all bunched together
+    std::cout << "Yeah!\n";
+
+
+    Easier to read:
+
+    // cout lives in the iostream library
+    std::cout << "Hello world!\n";
+
+    // these comments are easier to read
+    std::cout << "It is very nice to meet you!\n";
+
+    // when separated by whitespace
+    std::cout << "Yeah!\n";
+    ```
 
 <br>
 
