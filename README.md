@@ -1,6 +1,9 @@
 # COMP-1633-F23-Cplusplus-Notes
 
-
+# CREDITS
+* Mount Royal University, Comp 1633 - Intro to Comp Sci II
+* [learncpp.com](https://www.learncpp.com/)
+* [C++ for Python Programmers](https://runestone.academy/ns/books/published/cpp4python/index.html)
 
 ## Coding Standards 
 
