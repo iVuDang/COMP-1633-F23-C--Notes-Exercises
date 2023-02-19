@@ -553,20 +553,20 @@ function body, at most one return statement for each function.
 
 * std::cout, we’re saying “the cout that lives in namespace std“.
 * Design steps:
-    1. Define your goal in one sentence. 
+    1. Step 1: Define your goal in one sentence. 
         e.g. Model how long it takes for a ball dropped off a tower to hit the ground.
 
-    2. Define requirements, constraints and capabilities to meet users' needs. 
+    2. Step 2: Define requirements, constraints and capabilities to meet users' needs. 
         e.g. The user should be able to enter the height of the tower.
 
-    3. Define your tools, targets, and backup plan. 
+    3. Step 3: Define your tools, targets, and backup plan. 
         Defining what target architecture and/or OS your program will run on.
         Determining what set of tools you will be using.
         Determining whether you will write your program alone or as part of a team.
         Defining your testing/feedback/release strategy.
         Determining how you will back up your code.
 
-    4. Break hard problems into easy problems.
+    4. Step 4: Break hard problems into easy problems.
     
         * Top down method:
             Let’s take a look at an example of this. Let’s say we want to clean our house. Our task hierarchy currently looks like this:
@@ -632,7 +632,7 @@ function body, at most one return statement for each function.
         Print result
         
 * Implementation
-    1. Implementation step 1: Outlining your main function
+    1. Step 1: Outlining your main function
 
         ```cpp
         int main()
@@ -669,7 +669,7 @@ function body, at most one return statement for each function.
 
         ```
 
-    2. Implement each function
+    2. Step 2: Implement each function
 
         ```cpp
         #include <iostream>
@@ -707,7 +707,13 @@ function body, at most one return statement for each function.
 
     ```
 
-    3. Final testing - test the whole program to ensure it works as intended. 
+    3. Step 3: Final testing - test the whole program to ensure it works as intended. 
+
+* Keep programs simple to start. Make your first goal as simple as possible, and within reach.
+    * Add features over time. 
+    * Focus on one area at a time. 
+    * Test each piece of code as you go. 
+    * Don't worry about perfecting early code. The first draft of a feature (or program) is rarely good. Furthermore, programs tend to evolve over time, as you add capabilities and find better ways to structure things. If you invest too early in polishing your code (adding lots of documentation, full compliance with best practices, making optimizations), you risk losing all of that investment when a code change is necessary. Instead, get your features **minimally working** and then move on. As you gain confidence in your solutions, apply successive layers of polish. Don’t aim for perfect -- non-trivial programs are never perfect, and there’s always something more that could be done to improve them. Get to **“good enough” and move on**.
 
 
 
