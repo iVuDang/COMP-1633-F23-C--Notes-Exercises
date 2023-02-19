@@ -20,6 +20,91 @@ function body, at most one return statement for each function.
 * All local variable declarations at the top of each function, before the statements.
 * length of any line is to be less than or equal to **80 characters**. Should be shorter than this line:
 //------------------------------------------------------------------------------
+* Comments should describe the 
+    1.  Typically at the top of the file, library, or a function - WHAT the library, program, or the function does
+
+    ```cpp
+    // This program calculates the student's final grade based on their test and homework scores.
+
+    ```
+
+    2. Typically before a function - HOW the code is going to accomplish its goal 
+    
+    ```cpp
+    // To generate a random item, we're going to do the following:
+    // 1) Put all of the items of the desired rarity on a list
+    // 2) Calculate a probability for each item based on level and weight factor
+    // 3) Choose a random number
+    // 4) Figure out which item that random number corresponds to
+    // 5) Return the appropriate item
+
+    ```
+
+    3. At statement level - WHY the code is doing something. 
+     A bad statement comment explains what the code is doing. 
+     If you ever write code that is so complex that needs a comment to explain what a statement is doing, 
+     you probably need to rewrite your statement, not comment it.
+
+    ```cpp
+    Bad comment:
+
+    // Set sight range to 0
+    sight = 0;
+    Reason: We already can see that sight is being set to 0 by looking at the statement
+
+    Good comment:
+
+    // The player just drank a potion of blindness and can not see anything
+    sight = 0;
+    Reason: Now we know why the player’s sight is being set to 0
+
+    Bad comment:
+
+    // Calculate the cost of the items
+    cost = quantity * 2 * storePrice;
+    Reason: We can see that this is a cost calculation, but why is quantity multiplied by 2?
+
+    Good comment:
+
+    // We need to multiply quantity by 2 here because they are bought in pairs
+    cost = quantity * 2 * storePrice;
+    Reason: Now we know why this formula makes sense.
+
+    ```
+
+
+* Comments for readability, should be either aligned or at the top. 
+
+    ```cpp
+    // BAD
+    std::cout << "Hello world!\n"; // std::cout lives in the iostream library
+    std::cout << "It is very nice to meet you!\n"; // these comments make the code hard to read
+    std::cout << "Yeah!\n"; // especially when lines are different lengths
+
+    // GOOD FOR SHORT COMMENTS:
+    std::cout << "Hello world!\n";                 // std::cout lives in the iostream library
+    std::cout << "It is very nice to meet you!\n"; // this is much easier to read
+    std::cout << "Yeah!\n";                        // don't you think so?
+
+
+    // GOOD FOR LONG COMMENTS:
+    // std::cout lives in the iostream library
+    std::cout << "Hello world!\n";
+
+    // this is much easier to read
+    std::cout << "It is very nice to meet you!\n";
+
+    // don't you think so?
+    std::cout << "Yeah!\n";
+
+    /* This is a multi-line comment.
+    This line will be ignored.
+    So will this one. */
+
+    ```
+
+
+
 
 Opening documentation:
 ```
