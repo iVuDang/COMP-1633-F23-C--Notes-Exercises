@@ -264,6 +264,96 @@ function body, at most one return statement for each function.
 
     ```
 
+* DRY - don't repeat yourself. If there's something performing more than once, consider creating a function to call upon it.
+    ```cpp
+    // REDUNDANT, need to apply DRY Don't Repeat Yourself 
+
+    #include <iostream>
+
+    int main()
+    {
+        int x{};
+        std::cout << "Enter an integer: ";
+        std::cin >> x;
+
+        int y{};
+        std::cout << "Enter an integer: ";
+        std::cin >> y;
+
+        std::cout << x << " + " << y << " = " << x + y << '\n';
+
+        return 0;
+    }
+
+    // BETTER - create function do do job, and call it twice
+
+    #include <iostream>
+
+    int getValueFromUser()
+    {
+        std::cout << "Enter an integer: ";
+        int input{};
+        std::cin >> input;
+
+        return input;
+    }
+
+    int main()
+    {
+        int x{ getValueFromUser() }; // first call to getValueFromUser
+        int y{ getValueFromUser() }; // second call to getValueFromUser
+
+        std::cout << x << " + " << y << " = " << x + y << '\n';
+
+        return 0;
+    }
+
+    ```
+
+* Return functions vs. Void functions. 
+    * Return functions need to have return statement, and need to be used in cout in main function
+    * Void functions don't have a return statement, they have a cout statement, and can be called on it's own in main to print. 
+
+    ```cpp
+    // Return function
+    #include <iostream>
+
+    int return7()
+    {
+        return 7;
+    }
+
+    int return9()
+    {
+        return 9;
+    }
+
+    int main()
+    {
+        std::cout << return7() + return9() << '\n'; // 16
+
+        return 0;
+    }
+
+    // Void function
+
+    // void means the function does not return a value to the caller
+    void printHi()
+    {
+        std::cout << "Hi" << '\n';
+
+        // This function does not return a value so no return statement is needed
+    }
+
+    int main()
+    {
+        printHi(); // okay: function printHi() is called, no value is returned
+
+        return 0;
+    }
+
+    ```
+
 <br>
 
 
