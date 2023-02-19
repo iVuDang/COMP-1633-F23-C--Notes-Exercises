@@ -9,7 +9,7 @@
 <br> 
 
 ### :white_check_mark: GOOD 
-* Incremental development - regularly write, compile, and test each line/part of code/solution to ensure no errors at each step.
+* Incremental development - when writing programs, add a few lines or a function, compile, resolve any errors, and make sure it works. Don’t wait until you’ve written an entire program before compiling it for the first time! Add one piece at a time, make sure it compiles, and test it. Then when you’re sure it’s working, move on to the next piece. 
 * Break problems into **small enough problems** so that the problems cannot be wrong when solving them.
 * white space for increased readability
 * one statement per line 
@@ -240,6 +240,28 @@ function body, at most one return statement for each function.
 
     // when separated by whitespace
     std::cout << "Yeah!\n";
+    ```
+
+* Avoid altering and reassigning original variables:
+
+    ```cpp
+    The preferred solution
+
+    #include <iostream>
+
+    // preferred version
+    int main()
+    {
+        std::cout << "Enter an integer: ";
+
+        int num{ };                                                 // initialize variable
+        std::cin >> num;                                            // immediately use the variable 
+
+        std::cout << "Double that number is: " <<  num * 2 << '\n'; // use an expression to multiply num * 2 at the point where we are going to print it. Do not alter the original variable 'num'.
+
+        return 0;
+    }
+
     ```
 
 <br>
