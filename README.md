@@ -161,7 +161,7 @@ function body, at most one return statement for each function.
 
     ```
 
-* **Always Initialize your variables upon creation**:
+* **Always Initialize your variables upon creation**. Cout to get input, then set up variables, then cin to store:
     ```cpp
     #include <iostream>  // for std::cout and std::cin
     using namespace std; 
@@ -312,7 +312,11 @@ function body, at most one return statement for each function.
 
 * Return functions vs. Void functions. 
     * Return functions need to have return statement, and need to be used in cout in main function
-    * Void functions don't have a return statement, they have a cout statement, and can be called on it's own in main to print. 
+    * Void functions 
+        * don't have a return statement 
+        * they have a cout statement 
+        * called on it's own in main function to print
+        * should not be called in cout again 
 
     ```cpp
     // Return function
@@ -354,6 +358,20 @@ function body, at most one return statement for each function.
 
     ```
 
+* Use functions for organization, reusability, testing (self contained, incremental development). 
+* Groups of statements that appear more than once in a program should generally be made into a function. For example, if we’re reading input from the user multiple times in the same way, that’s a great candidate for a function. If we output something in the same way in multiple places, that’s also a great candidate for a function.
+
+* Headers - to maximize the chance that missing includes will be flagged by compiler, order your #includes as follows:
+    ```
+    The paired header file
+    Other headers from your project
+    3rd party library headers
+    Standard library headers
+    The headers for each grouping should be sorted alphabetically
+    ```
+
+
+
 <br>
 
 
@@ -380,6 +398,175 @@ function body, at most one return statement for each function.
     * 3 / 2 is 1.5, but the .5 is removed. 
 * Integer operated with a double will result in a double. 
     * 1 + 2.5 = 3.5
+
+* Parameters vs. Arguments. 
+    * Parameters are stating the input type in original function. 
+    * Arguments are values used in calling the functions. 
+
+    ```cpp
+    Here are some examples of functions with different numbers of parameters:
+
+    // This function takes no parameters
+    // It does not rely on the caller for anything
+    void doPrint()
+    {
+        std::cout << "In doPrint()\n";
+    }
+
+    // This function takes one integer parameter named x
+    // The caller will supply the value of x
+    void printValue(int x)
+    {
+        std::cout << x  << '\n';
+    }
+
+    // This function has two integer parameters, one named x, and one named y
+    // The caller will supply the value of both x and y
+    int add(int x, int y)
+    {
+        return x + y;
+    }
+    An argument is a value that is passed from the caller to the function when a function call is made:
+
+    doPrint(); // this call has no arguments
+    printValue(6); // 6 is the argument passed to function printValue()
+    add(2, 3); // 2 and 3 are the arguments passed to function add()
+
+
+    #include <iostream>
+
+    // This function has two integer parameters, one named x, and one named y
+    // The values of x and y are passed in by the caller
+    void printValues(int x, int y)
+    {
+        std::cout << x << '\n';
+        std::cout << y << '\n';
+    }
+
+    int main()
+    {
+        printValues(6, 7); // This function call has two arguments, 6 and 7
+
+        return 0;
+    }
+
+    // 6
+    // 7
+
+
+    // Example - create a void function, set up parameter, and apply argument in main function. 
+    #include <iostream>
+
+    int getValueFromUser()
+    {
+        std::cout << "Enter an integer: ";
+        int input{};
+        std::cin >> input;
+
+        return input;
+    }
+
+    int main()
+    {
+        int num { getValueFromUser() };
+
+        std::cout << num << " doubled is: " << num * 2 << '\n';
+
+        return 0;
+    }
+
+
+    // Output line into its own function
+    #include <iostream>
+
+    int getValueFromUser()
+    {
+        std::cout << "Enter an integer: ";
+        int input{};
+        std::cin >> input;
+
+        return input;
+    }
+
+    void printDouble(int value)       // This function now has an integer parameter
+    {
+        std::cout << value << " doubled is: " << value * 2 << '\n';
+    }
+
+    int main()
+    {
+        int num { getValueFromUser() }; // We set up an integer parameter
+
+        printDouble(num);               // Called upon our void function, and applied integer parameter 
+
+        return 0;
+    }
+
+
+    // More concise - putting the return function as parameter within the void function as an argument
+    #include <iostream>
+
+    int getValueFromUser()
+    {
+        std::cout << "Enter an integer: ";
+        int input{};
+        std::cin >> input;
+
+        return input;                           // this is the 'int value' parameter, can put into void function
+    }
+
+    void printDouble(int value)
+    {
+        std::cout << value << " doubled is: " << value * 2 << '\n';
+    }
+
+    int main()
+    {
+        printDouble(getValueFromUser());
+
+        return 0;
+    }
+
+    ```
+
+* Forward declaration (function prototype). 
+    * Generally functions at top, and main function at bottom. 
+    * If cannot reorder the functions, then use forward declaration. 
+
+    ```cpp 
+    #include <iostream>
+
+    int add(int x, int y); // forward declaration of add() (using a function declaration) (function prototype)
+
+    int main()
+    {
+        std::cout << "The sum of 3 and 4 is: " << add(3, 4) << '\n'; // this works because we forward declared add() above
+        return 0;
+    }
+
+    int add(int x, int y) // even though the body of add() isn't defined until here
+    {
+        return x + y;
+    }
+
+    ```
+
+* std::cout, we’re saying “the cout that lives in namespace std“.
+* Design steps:
+    1. Define your goal in one sentence. 
+        e.g. Model how long it takes for a ball dropped off a tower to hit the ground.
+
+    2. Define requirements, constraints and capabilities to meet users' needs. 
+        e.g. The user should be able to enter the height of the tower.
+
+    3. Define your tools, targets, and backup plan. 
+        Defining what target architecture and/or OS your program will run on.
+        Determining what set of tools you will be using.
+        Determining whether you will write your program alone or as part of a team.
+        Defining your testing/feedback/release strategy.
+        Determining how you will back up your code.
+
+    4. 
 
 
 <br>
