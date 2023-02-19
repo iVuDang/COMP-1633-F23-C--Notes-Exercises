@@ -9,6 +9,8 @@
 <br> 
 
 ### :white_check_mark: GOOD 
+* Incremental development - regularly write, compile, and test each line/part of code/solution to ensure no errors at each step.
+* Break problems into **small enough problems** so that the problems cannot be wrong when solving them.
 * white space for increased readability
 * one statement per line 
 * consistent bracing formats with paired open and close braces aligned vertically
@@ -110,6 +112,16 @@ function body, at most one return statement for each function.
     cost = quantity * 2 * storePrice;
     Reason: Now we know why this formula makes sense.
 
+    Comments are a great way to remind yourself (or tell somebody else) the reason you made one decision instead of another.
+
+    Good comments:
+
+    // We decided to use a linked list instead of an array because
+    // arrays do insertion too slowly.
+    // We're going to use Newton's method to find the root of a number because
+    // there is no deterministic way to solve these equations.
+
+
     ```
     
 
@@ -130,6 +142,46 @@ function body, at most one return statement for each function.
     4. Input, type of data, and example input.
     5. Output, type of data and desired result.
     ```
+* Ways to initialize a variables:
+    ```cpp
+    int a;         // no initializer (default initialization)
+    int b = 5;     // initializer after equals sign (copy initialization)
+    int c( 6 );    // initializer in parenthesis (direct initialization)
+
+    // List initialization methods (C++11)
+    int d { 7 };   // initializer in braces (direct list initialization)
+    int e = { 8 }; // initializer in braces after equals sign (copy list initialization)
+    int f {};      // initializer is empty braces (value initialization)
+
+    int a = 5, b = 6;          // copy initialization
+    int c( 7 ), d( 8 );        // direct initialization
+    int e { 9 }, f { 10 };     // direct brace initialization (preferred)
+    int g = { 9 }, h = { 10 }; // copy brace initialization
+    int i {}, j {};            // value initialization
+
+    ```
+
+* **Always Initialize your variables upon creation**:
+    ```cpp
+    #include <iostream>  // for std::cout and std::cin
+    using namespace std; 
+
+    int main()
+    {
+        cout << "Enter two numbers separated by a space: ";
+
+        int x{ }; // define variable x to hold user input (and zero-initialize it)
+        int y{ }; // define variable y to hold user input (and zero-initialize it)
+    
+        cin >> x >> y; // get two numbers and store in variable x and y respectively
+
+        cout << "You entered " << x << " and " << y << '\n';
+
+        return 0;
+    }
+
+    ```
+
 
 <br>
 
