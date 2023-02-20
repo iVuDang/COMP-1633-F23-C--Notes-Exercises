@@ -17,7 +17,19 @@
 * variable and function names, must be meaningful and self-descriptive, with underscores to separate words:
     * function names start with verb, lowercase e.g. get_name
     * variable names describe what it is, lowercase e.g. avg_grade 
-    * constants are capitalized e.g. TAX_RATE
+    * const or constexpr are capitalized e.g. TAX_RATE
+
+    ```cpp
+        constexpr double EARTH_GRAVITY { 9.8 };  // preferred use of const before type
+        // Place const before the type (because it is more idiomatic to do so).
+        // Const variables must be initialized when you define them
+        // EARTH_GRAVITY, intercapped names with a ‘k’ prefix e.g. kEarthGravity, earthGravity.
+        // Don’t use const when passing by value.
+        // Any variable that should not be modifiable after initialization and whose initializer is known at compile-time should be declared as constexpr.
+        // Any variable that should not be modifiable after initialization and whose initializer is not known at compile-time should be declared as const.
+        
+    ```
+    
 * A function must have a single exit point (i.e. return statement), at the end of the
 function body, at most one return statement for each function.
 * One function, one job. 
@@ -312,11 +324,13 @@ function body, at most one return statement for each function.
 
 * Return functions vs. Void functions. 
     * Return functions need to have return statement, and need to be used in cout in main function
+        * These functions already return a value, hence, no parameters/arguments are applied to them in main function. 
     * Void functions 
         * don't have a return statement 
         * they have a cout statement 
         * called on it's own in main function to print
         * should not be called in cout again 
+        * uses parameters/arguments (while return functions don't)
 
     ```cpp
     // Return function
@@ -378,6 +392,8 @@ function body, at most one return statement for each function.
 ### :x: AVOID
 * Global variables are unacceptable. **Global constants are encouraged** e.g. GST used in several functions.
 * Code or email, no more than 80 spaces (keep easy to read). 
+* Avoid magic numbers (numbers plugged into code). Use constexpr variables instead. 
+
 
 <br>
 
@@ -737,7 +753,7 @@ function body, at most one return statement for each function.
     ```
 
 
-    2. Add cerr<< validation/debug print statements
+    2. Add cerr << validation/debug print statements to validate code flow. 
     (When adding temporary debug statements, it can be helpful to not indent them. This makes them easier to find for removal later)
 
     ```cpp 
@@ -832,15 +848,221 @@ function body, at most one return statement for each function.
         }
 
     ```
-    Output:
+        Output:
 
-    Enter a number: 4
-    main::x = 4
-    Enter a number: 3
-    main::y = 3
-    add() called (x=4, y=5)
-    main::z = 9
-    The answer is: 9
+        Enter a number: 4
+        main::x = 4
+        Enter a number: 3
+        main::y = 3
+        add() called (x=4, y=5)
+        main::z = 9
+        The answer is: 9
+
+
+    4. A breakpoint is a special marker that tells the debugger to stop execution of the program at the breakpoint when running in debug mode.
+
+* Use **boolalpha** to print true or false instead of 0 or 1. 
+
+    ```cpp
+    #include <iostream>
+
+    // returns true if x and y are equal, false otherwise
+    bool isEqual(int x, int y)
+    {
+        return (x == y); // operator== returns true if x equals y, and false otherwise
+    }
+
+    int main()
+    {
+        std::cout << "Enter an integer: ";
+        int x{};
+        std::cin >> x;
+
+        std::cout << "Enter another integer: ";
+        int y{};
+        std::cin >> y;
+
+        std::cout << std::boolalpha; // print bools as true or false
+
+        std::cout << x << " and " << y << " are equal? ";
+        std::cout << isEqual(x, y); // will return true or false
+
+        return 0;
+    }
+
+
+    /*
+    Enter an integer: 5
+    Enter another integer: 5
+    5 and 5 are equal? true 
+
+
+    Enter an integer: 6
+    Enter another integer: 4
+    6 and 4 are equal? false 
+    */
+
+    ```
+
+* Four ways to do if statements:
+
+    ```cpp 
+        #include <iostream>
+
+        bool isPrime(int x)
+        {
+            if (x == 2) // if user entered 2, the digit is prime
+                return true;
+            else if (x == 3) // if user entered 3, the digit is prime
+                return true;
+            else if (x == 5) // if user entered 5, the digit is prime
+                return true;
+            else if (x == 7) // if user entered 7, the digit is prime
+                return true;
+
+            return false; // if the user did not enter 2, 3, 5, 7, the digit must not be prime
+        }
+
+        int main()
+        {
+            std::cout << "Enter a number 0 through 9: ";
+            int x {};
+            std::cin >> x;
+
+            if ( isPrime(x) )
+                std::cout << "The digit is prime\n";
+            else
+                std::cout << "The digit is not prime\n";
+
+            return 0;
+        }
+
+        /*
+
+        Enter a number 0 through 9: 5
+        The digit is prime
+
+        */
+
+
+        // MORE EFFICIENT METHODS
+
+        // A. Using the logical OR (||) operator (5.7 -- Logical operators):
+
+        bool isPrime(int x)
+        {
+            return (x == 2 || x == 3 || x == 5 || x == 7); // if user entered 2 or 3 or 5 or 7 the digit is prime
+        }
+
+        int main()
+        {
+            std::cout << "Enter a number 0 through 9: ";
+            int x {};
+            std::cin >> x;
+
+            if ( isPrime(x) )
+                std::cout << "The digit is prime\n";
+            else
+                std::cout << "The digit is not prime\n";
+
+            return 0;
+        }
+
+
+        // B. Using a switch statement (7.4 -- Switch statement basics):
+
+        bool isPrime(int x)
+        {
+            switch (x)
+            {
+                case 2: // if the user entered 2
+                case 3: // or if the user entered 3
+                case 5: // or if the user entered 5
+                case 7: // or if the user entered 7
+                    return true; // then the digit is prime
+            }
+
+            return false; // otherwise the digit must not be prime
+        }
+
+
+        int main()
+        {
+            std::cout << "Enter a number 0 through 9: ";
+            int x {};
+            std::cin >> x;
+
+            if ( isPrime(x) )
+                std::cout << "The digit is prime\n";
+            else
+                std::cout << "The digit is not prime\n";
+
+            return 0;
+        }
+
+        // C. Ternary Operator
+        // variable = (condition) ? expressionTrue : expressionFalse;  
+
+    ```
+* Never need a if statement for evaluating bool.
+
+    ```cpp
+        // We don’t need the if-statement in isAllowedToTakeFunRide(). The expression height > 140.0 evaluates to a bool, which can be directly returned.
+
+        bool isAllowedToTakeFunRide()
+        {
+        std::cout << "How tall are you? (cm)\n";
+
+        double height{};
+        std::cin >> height;
+
+        return (height > 140.0);
+        }
+
+
+        // You never need an if-statement of the form:
+
+        if (condition)
+        return true;
+        else
+        return false;
+
+
+        // This can be replaced by the single statement return condition.
+    ```
+
+* Escape sequences uses back slash '\n' , not multicharacter literal '/n'.
+* If using std::getline() to read strings, use std::cin >> std::ws input manipulator to ignore leading whitespace.
+    ```cpp
+        #include <string> // For std::string and std::getline
+        #include <iostream>
+
+        int main()
+        {
+            std::cout << "Enter your full name: ";
+            std::string name{};
+            std::getline(std::cin >> std::ws, name); // read a full line of text into name
+
+            std::cout << "Enter your age: ";
+            std::string age{};
+            std::getline(std::cin >> std::ws, age); // read a full line of text into age
+
+            std::cout << "Your name is " << name << " and your age is " << age << '\n';
+
+            return 0;
+        }
+
+
+        // Now our program works as expected:
+
+        // Enter your full name: John Doe
+        // Enter your age: 23
+        // Your name is John Doe and your age is 23
+
+        // The std::ws input manipulator tells std::cin to ignore any leading whitespace before extraction. Leading whitespace is any whitespace character (spaces, tabs, newlines) that occur at the start of the string.
+
+    ```
+
 
 <br>
 
