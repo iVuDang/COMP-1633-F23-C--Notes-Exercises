@@ -384,6 +384,27 @@ function body, at most one return statement for each function.
     The headers for each grouping should be sorted alphabetically
     ```
 
+* Use parentheses to make it clear how a non-trivial expression should evaluate (even if they are technically unnecessary). For example, in the expression (2 + 3) * 4, the (2 + 3) part is evaluated first.
+    * x = 2 + 3 % 4
+    * x = (2 + (3 % 4))
+    * NAO precedence: Not, And, Or, can use keyword or symbolic:
+        * not !x
+        * and x && y
+        * or x || y
+    * If same level, left to right
+    * a || b && c || d;
+    * (a || (b && c)) || d;
+
+* If logical NOT is intended to operate on the result of other operators, the other operators and their operands need to be enclosed in parentheses.
+    * logical NOT has a very high level of precedence, !x will check x first, rather than the statement 'x > y' 
+    * Wrong: (!x > y) 
+    * Correct: (!(x > y))
+
+* WWhen mixing logical AND and logical OR in a single expression, explicitly parenthesize each operation to ensure they evaluate how you intend.
+    * Bad: value1 && value2 || value3 && value4, 
+    * Better: (value1 && value2) || (value3 && value4)
+    * value1 || value2 && value3
+    * logical AND has higher precedence, evaluates as: value1 || (value2 && value3)
 
 
 <br>
@@ -393,6 +414,51 @@ function body, at most one return statement for each function.
 * Global variables are unacceptable. **Global constants are encouraged** e.g. GST used in several functions.
 * Code or email, no more than 80 spaces (keep easy to read). 
 * Avoid magic numbers (numbers plugged into code). Use constexpr variables instead. 
+* Avoid using the comma operator, except within for loops.
+* Avoid using operator== and operator!= to compare floating point values if there is any chance those values have been calculated.
+* Never need a if statement for evaluating bool. 
+    * Don’t add unnecessary == or != to conditions. It makes them harder to read without offering any additional value.
+
+    ```cpp
+        // We don’t need the if-statement in isAllowedToTakeFunRide(). The expression height > 140.0 evaluates to a bool, which can be directly returned.
+
+        bool isAllowedToTakeFunRide()
+        {
+        std::cout << "How tall are you? (cm)\n";
+
+        double height{};
+        std::cin >> height;
+
+        return (height > 140.0);
+        }
+
+
+        // You never need an if-statement of the form:
+
+        if (condition)
+        return true;
+        else
+        return false;
+
+
+        // This can be replaced by the single statement return condition.
+
+
+        Many new programmers will write statements like this one:
+
+        if (b1 == true) ...
+        This is redundant, as the == true doesn’t actually add any value to the condition. Instead, we should write:
+
+        if (b1) ...
+        Similarly, the following:
+
+        if (b1 == false) ...
+        is better written as:
+
+
+        if (!b1) ...
+
+    ```
 
 
 <br>
@@ -999,37 +1065,13 @@ function body, at most one return statement for each function.
 
             return 0;
         }
-
-        // C. Ternary Operator
-        // variable = (condition) ? expressionTrue : expressionFalse;  
-
     ```
-* Never need a if statement for evaluating bool.
 
-    ```cpp
-        // We don’t need the if-statement in isAllowedToTakeFunRide(). The expression height > 140.0 evaluates to a bool, which can be directly returned.
+* Ternary Operator
+    * variable = (condition) ? expressionTrue : expressionFalse; 
+    * Always parenthesize the conditional part of the conditional operator, and consider parenthesizing the whole thing as well. 
+    * Only use the conditional operator for simple conditionals where you use the result and where it enhances readability.
 
-        bool isAllowedToTakeFunRide()
-        {
-        std::cout << "How tall are you? (cm)\n";
-
-        double height{};
-        std::cin >> height;
-
-        return (height > 140.0);
-        }
-
-
-        // You never need an if-statement of the form:
-
-        if (condition)
-        return true;
-        else
-        return false;
-
-
-        // This can be replaced by the single statement return condition.
-    ```
 
 * Escape sequences uses back slash '\n' , not multicharacter literal '/n'.
 * If using std::getline() to read strings, use std::cin >> std::ws input manipulator to ignore leading whitespace.
@@ -1062,7 +1104,52 @@ function body, at most one return statement for each function.
         // The std::ws input manipulator tells std::cin to ignore any leading whitespace before extraction. Leading whitespace is any whitespace character (spaces, tabs, newlines) that occur at the start of the string.
 
     ```
+* x = x + 4; // add 4 to existing value of x
+    * x += 4; // add 4 to existing value of x
 
+
+* Modulus calculation formula: (Quotient × Divisor) + Remainder = Dividen
+    * The modulus operator can also work with negative operands. x % y always returns results with the sign of x.
+    * 2 / 4 is 0 (using integer division) remainder 2. Whenever the second number is larger than the first, the second number will divide the first 0 times, so the first number will be the remainder.
+
+* Exponent operator: 
+    ```cpp
+        #include <cmath>
+
+        double x{ std::pow(3.0, 4.0) }; // 3 to the 4th power
+    ```
+
+* ++x	Increment x, then return x
+* x++	Copy x, then increment x, then return the copy
+
+    ```cpp
+        #include <iostream>
+
+        int main()
+        {
+            int x{ 5 };
+            int y{ 5 };
+            std::cout << x << ' ' << y << '\n';                   // 5 5
+        
+            std::cout << ++x << ' ' << --y << '\n'; // prefix    // 6 4
+        
+            std::cout << x << ' ' << y << '\n';                  // 6 4
+        
+            std::cout << x++ << ' ' << y-- << '\n'; // postfix   // 6 4 
+
+            // changes don’t show up until the next line, when x and y are evaluated again.
+            std::cout << x << ' ' << y << '\n';                  // 7 3
+
+            return 0;
+        }
+
+    ```
+
+* !(x && y) is NOT the same thing as !x && !y. Unfortunately, you can not “distribute” the logical NOT in that manner.
+    * De Morgan’s law tells us how the logical NOT should be distributed in these cases:
+        * !(x && y) is equivalent to !x || !y
+        * !(x || y) is equivalent to !x && !y
+        * when you distribute the logical NOT, you also need to flip logical AND to logical OR, and vice-versa!
 
 <br>
 
@@ -1102,4 +1189,43 @@ Linux | lpr filename | print file.
 
 
 
+Alt + Shift + < > : to auto move up and down
+c + S : to find keyword
+C + R : to reverse search
+C + G : to quit current command 
+C + L: move cursor to center of screen
 
+C + Z / FG : to sleep, unsleep
+
+C + X pause, 2 : horizontal panes
+C + X pause, 3: vertical panes
+C + X pause, 1: 1 pane
+
+
+C + X, u : to undo
+
+C + K : to delete
+C + Y : undo 
+
+
+Shift + arrow down to highlight 
+Ctrl + Space (at top of code) : to highlight
+
+
+Ctrl + X, H to select all 
+Ctrl + G, to kill
+
+Ctrl + W : to cut
+Ctrl + Y: to paste
+
+type few letters, Alt + / : to autocomplete variables 
+Ctrl + / : to undo 
+
+Shift + Alt + % : query replace
+
+Alt + X, type compile: 
+` to jump to next error 
+fix, repeat
+
+
+Alt + X, type customize-themes: press enter 
