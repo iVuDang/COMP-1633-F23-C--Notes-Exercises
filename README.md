@@ -400,11 +400,14 @@ function body, at most one return statement for each function.
     * Wrong: (!x > y) 
     * Correct: (!(x > y))
 
-* WWhen mixing logical AND and logical OR in a single expression, explicitly parenthesize each operation to ensure they evaluate how you intend.
+* When mixing logical AND and logical OR in a single expression, explicitly parenthesize each operation to ensure they evaluate how you intend.
     * Bad: value1 && value2 || value3 && value4, 
     * Better: (value1 && value2) || (value3 && value4)
     * value1 || value2 && value3
     * logical AND has higher precedence, evaluates as: value1 || (value2 && value3)
+
+* Declare local variables as close to where they are used as possible is because doing so minimizes the amount of code you need to look through to understand what the variable does. 
+    * Global variables are at the opposite end of the spectrum -- because they can be accessed anywhere, you might have to look through the entire program to understand their usage. Global variables also make your program less modular, less flexible, less reusable.
 
 
 <br>
@@ -459,7 +462,8 @@ function body, at most one return statement for each function.
         if (!b1) ...
 
     ```
-
+* Keep the nesting level of your functions to 3 or less. If your function has a need for more nested levels, consider refactoring your function into sub-functions.
+* Define variables in the most limited existing scope. Avoid creating new blocks whose only purpose is to limit the scope of variables.
 
 <br>
 
