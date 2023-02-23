@@ -409,6 +409,139 @@ function body, at most one return statement for each function.
 * Declare local variables as close to where they are used as possible is because doing so minimizes the amount of code you need to look through to understand what the variable does. 
     * Global variables are at the opposite end of the spectrum -- because they can be accessed anywhere, you might have to look through the entire program to understand their usage. Global variables also make your program less modular, less flexible, less reusable.
 
+* If must use a constant variable,  it’s a better practice to “encapsulate” a constant variable
+
+    ```cpp
+        // For example, instead of:
+
+        namespace constants
+        {
+            extern const double gravity { 9.8 }; // has external linkage, is directly accessible by other files
+        }
+
+
+        // Do this:
+        namespace constants
+        {
+            constexpr double gravity { 9.8 }; // has internal linkage, is accessible only by this file
+        }
+
+        double getGravity() // this function can be exported to other files to access the global outside of this file
+        {
+            // We could add logic here if needed later
+            // or change the implementation transparently to the callers
+            return constants::gravity;
+        }
+
+    ```
+
+* Loop variables are often given simple names, such as i, j, or k. However, if you want to know where in your program a loop variable is used, and you use the search function on i, j, or k, the search function will return half of the lines in your program! 
+    * For this reason, some developers prefer loop variable names like iii, jjj, or kkk. Because these names are more unique, this makes searching for loop variables much easier, and helps them stand out as loop variables. 
+    * An even better idea is to use “real” variable names, such as count, or a name that gives more detail about what you’re counting (e.g. userCount)
+
+* Use break and continue when they simplify your loop logic:
+
+    ```cpp
+        // break and continue can help make loops more readable by keeping the number of nested blocks down and reducing the need for complicated looping logic.
+        #include <iostream>
+
+        int main()
+        {
+            int count{ 0 }; // count how many times the loop iterates
+            bool keepLooping { true }; // controls whether the loop ends or not
+            while (keepLooping)
+            {
+                std::cout << "Enter 'e' to exit this loop or any other character to continue: ";
+                char ch{};
+                std::cin >> ch;
+
+                if (ch == 'e')
+                    keepLooping = false;
+                else
+                {
+                    ++count;
+                    std::cout << "We've iterated " << count << " times\n";
+                }
+            }
+
+            return 0;
+        }
+
+
+        // Here’s a version that’s easier to understand, using a break statement:
+
+        #include <iostream>
+
+        int main()
+        {
+            int count{ 0 }; // count how many times the loop iterates
+            while (true) // loop until user terminates
+            {
+                std::cout << "Enter 'e' to exit this loop or any other character to continue: ";
+                char ch{};
+                std::cin >> ch;
+
+                if (ch == 'e')
+                    break;
+
+                ++count;
+                std::cout << "We've iterated " << count << " times\n";
+            }
+
+            return 0;
+        }
+
+
+        //------------------------------------------------------------------------------
+
+
+    ```
+
+* Break vs. Return
+
+    ```cpp
+        #include <iostream>
+
+        int breakOrReturn()
+        {
+            while (true) // infinite loop
+            {
+                std::cout << "Enter 'b' to break or 'r' to return: ";
+                char ch{};
+                std::cin >> ch;
+
+                if (ch == 'b')
+                    break; // execution will continue at the first statement beyond the loop
+
+                if (ch == 'r')
+                    return 1; // return will cause the function to immediately return to the caller (in this case, main())
+            }
+
+            // breaking the loop causes execution to resume here
+
+            std::cout << "We broke out of the loop\n";
+
+            return 0;
+        }
+
+        int main()
+        {
+            int returnValue{ breakOrReturn() };
+            std::cout << "Function breakOrReturn returned " << returnValue << '\n';
+
+            return 0;
+        }
+
+
+        // Enter 'b' to break or 'r' to return: r
+        // Function breakOrReturn returned 1
+
+        // Enter 'b' to break or 'r' to return: b
+        // We broke out of the loop
+        // Function breakOrReturn returned 0
+
+    ```
+
 
 <br>
 
