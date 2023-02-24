@@ -542,6 +542,7 @@ function body, at most one return statement for each function.
 
     ```
 
+* Favor references over pointers unless the additional capabilities provided by pointers are needed.
 
 <br>
 
