@@ -544,6 +544,61 @@ function body, at most one return statement for each function.
 
 * Favor references over pointers unless the additional capabilities provided by pointers are needed.
 
+* For each loops are preferred over standard for loops:
+
+    ```cpp
+    // Standard for loop
+    #include <iostream>
+    #include <iterator> // std::size
+    using namespace std; 
+
+    int main()
+    {
+        constexpr int scores[]{ 84, 92, 76, 81, 56 };
+        constexpr int numStudents{ sizeof(scores) };
+
+        int maxScore{ 0 }; // keep track of our largest score
+        for (int student{ 0 }; student < numStudents; ++student)
+        {
+            if (scores[student] > maxScore)
+            {
+                maxScore = scores[student];
+            }
+        }
+
+        cout << "The best score was " << maxScore << '\n';
+
+        return 0;
+    }
+
+    // The best score was 92
+
+
+    // For each loop:
+    #include <iostream>
+
+    int main()
+    {
+        constexpr int scores[]{ 84, 92, 76, 81, 56 };
+        int maxScore{ 0 }; // keep track of our largest score
+
+        for (auto score : scores) // iterate over array scores, assigning each value in turn to variable score
+        {
+            if (score > maxScore)
+            {
+                maxScore = score;
+            }
+        }
+
+        std::cout << "The best score was " << maxScore << '\n';
+
+        return 0;
+    }
+
+    // For-each loops provide a superior syntax for iterating through an array when we need to access all of the array elements in forwards sequential order. It should be preferred over the standard for loop
+
+    ```
+
 <br>
 
 
