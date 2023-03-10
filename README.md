@@ -659,6 +659,18 @@ function body, at most one return statement for each function.
 ---
 
 ## :bookmark_tabs: Notes 
+* Loop to read files:
+    ```cpp
+        cin >> identifier_for_info;
+
+        while (!cin.eof())
+        {
+            
+        }
+
+    ```
+
+
 * Operator precedence
     * Left to Right if same precedence level. 
     * a*b   a/b   a%b
