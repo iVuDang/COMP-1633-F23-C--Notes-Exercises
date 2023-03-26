@@ -32,7 +32,7 @@
     
 * A function must have a single exit point (i.e. return statement), at the end of the
 function body, at most one return statement for each function.
-* One function, one job. 
+* One function, one job. Properly modular (approx. 25 lines or less). 
 * Keep calculations separate from output and return statements. Use variables to store intermediate calcs.
 * Each variable should have exactly one purpose. 
 * All local variable declarations at the top of each function, before the statements.
@@ -1377,6 +1377,7 @@ Linux | Ctrl + <kbd>Y</kbd> | Paste.
 Linux | Right click mouse | Paste. 
 Linux | cat filename | view contents of file. 
 Linux | cat <filename>, select all with mouse, Alt + <kbd>W</kbd> | Ctrl + V to copy and paste contents outside of linux terminal e.g. to Visual Studio Code. 
+Linux | Ctrl + Space bar, Ctrl +Shift + > | Highlight all (to copy)
 Linux | cd | navigate to home directory.
 Linux | cd.. | navigate up one directory. 
 Linux | pwd | check current file path. 
@@ -1388,9 +1389,11 @@ Linux | cp -R directoryname| copy directory.
 Linux | mv oldnamefile1 newnamefile1 | change name of file. 
 Linux | rm filename | remove file.
 Linux | rm -R directoryname | remove directory. 
-Linux | g++ filename | compile/debug the code file. 
-Linux | ./a.out < test filename | run test file. 
+Linux | g++ filename | compile/debug the code file before running the program. 
+Linux | ./a.out < test filename | run program pointing to test file. 
+Linux | ./a.out | run the program by itself
 Linux | lpr filename | print file. 
+
 
 
 
@@ -1434,3 +1437,10 @@ fix, repeat
 
 
 Alt + X, type customize-themes: press enter 
+
+
+## :desktop_computer: Visual Studio Code extensions for C++
+Microsoft C/C++ extension
+CMake Tools
+clangd
+codeLLDB
