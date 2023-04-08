@@ -1393,8 +1393,7 @@ Linux | g++ filename | compile/debug the code file before running the program.
 Linux | ./a.out < test filename | run program pointing to test file. 
 Linux | ./a.out | run the program by itself
 Linux | lpr filename | print file. 
-
-
+Linux | Ctrl + <kbd>G</kbd> | to kill operation. 
 
 
 Alt + Shift + < > : to auto move up and down
