@@ -1384,6 +1384,8 @@ Linux | pwd | check current file path.
 Linux | ls -l | list all items in directory vertically. 
 Linux | ls | list all items in directory horizontally. 
 Linux | mkdir 'name of folder' | create folder
+Linux | mv 'name of folder' 'destination' | move file to folder
+Linux | mv -t DESTINATION file1 file2 file3 | move multiple files to folder
 Linux | cp filename destination | copy file to specified destination. 
 Linux | cp filename ~ | copy file to home directory. 
 Linux | cp -R directoryname| copy directory. 
