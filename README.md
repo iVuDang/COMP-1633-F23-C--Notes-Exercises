@@ -1383,6 +1383,7 @@ Linux | cd.. | navigate up one directory.
 Linux | pwd | check current file path. 
 Linux | ls -l | list all items in directory vertically. 
 Linux | ls | list all items in directory horizontally. 
+Linux | mkdir 'name of folder' | create folder
 Linux | cp filename destination | copy file to specified destination. 
 Linux | cp filename ~ | copy file to home directory. 
 Linux | cp -R directoryname| copy directory. 
